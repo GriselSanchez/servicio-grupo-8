@@ -1,0 +1,184 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "",
+    "version": ""
+  },
+  "paths": {
+    "/calcular-confiabilidad-comunidad": {
+      "post": {
+        "tags": [
+          "Confiabilidad comunidad"
+        ],
+        "summary": "Calcular confiabilidad de una comunidad",
+        "operationId": "calcularConfiabilidadComunidad",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Comunidad"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/calcular-confiabilidad-usuario": {
+      "post": {
+        "tags": [
+          "Confiabilidad usuario"
+        ],
+        "summary": "Calcular confiabilidad de un usuario",
+        "operationId": "calcularConfiabilidadUsuario",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Comunidad": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "usuarios": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Usuario"
+            }
+          },
+          "gradoDeConfiabilidad": {
+            "$ref": "#/components/schemas/GradoDeConfiabilidad"
+          },
+          "puntosDeConfianza": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "GradoDeConfiabilidad": {
+        "type": "string",
+        "enum": [
+          "NO_CONFIABLE",
+          "CON_RESERVAS",
+          "CONFIABLE_NIVEL_1",
+          "CONFIABLE_NIVEL_2"
+        ]
+      },
+      "Incidente": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "usuarioCierre": {
+            "$ref": "#/components/schemas/Usuario"
+          },
+          "fechaCierre": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "fechaApertura": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "usuarioApertura": {
+            "$ref": "#/components/schemas/Usuario"
+          }
+        }
+      },
+      "Usuario": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "activo": {
+            "type": "boolean"
+          },
+          "incidentes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Incidente"
+            }
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "puntosDeConfianza": {
+            "type": "number",
+            "format": "double"
+          },
+          "gradoConfiabilidad": {
+            "$ref": "#/components/schemas/GradoDeConfiabilidad"
+          }
+        }
+      }
+    }
+  }
+}

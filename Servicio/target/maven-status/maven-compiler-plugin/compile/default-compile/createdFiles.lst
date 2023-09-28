@@ -1,0 +1,12 @@
+ar\edu\utn\frba\dds\api_servicio\service\CalcularConfiabilidadComunidad.class
+openapi-plugin\.index
+ar\edu\utn\frba\dds\api_servicio\controllers\ConfiabilidadUsuarioController.class
+ar\edu\utn\frba\dds\api_servicio\entities\GradoDeConfiabilidad.class
+json-schemes\index
+ar\edu\utn\frba\dds\api_servicio\controllers\ConfiabilidadComunidadController.class
+openapi-plugin\openapi-default.json
+ar\edu\utn\frba\dds\api_servicio\entities\Incidente.class
+ar\edu\utn\frba\dds\api_servicio\entities\Usuario.class
+ar\edu\utn\frba\dds\api_servicio\entities\Comunidad.class
+ar\edu\utn\frba\dds\api_servicio\main.class
+ar\edu\utn\frba\dds\api_servicio\service\CalcularConfiabilidadUsuario.class
